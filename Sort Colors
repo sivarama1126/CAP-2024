@@ -1,0 +1,31 @@
+class Solution {
+    public void merge(int []nums,int l,int m,int n,int h){
+        int k=0;
+        int j=l;
+        int [] arr = new int [h+1-l];
+        while(l<=m && n<=h){
+            if(nums[l]<nums[n]){
+                arr[k++]=nums[l++];
+            }
+            else{
+                arr[k++]=nums[n++];
+            }
+        }
+        while(l<=m) arr[k++]=nums[l++];
+        while(n<=h) arr[k++]=nums[n++];
+        for(int i : arr){
+            nums[j++]=i;
+        }
+    }
+    public void mergesort(int [] nums,int lb,int ub){
+        if(lb<ub){
+            int mid=lb+((ub-lb)/2);
+            mergesort(nums,lb,mid);
+            mergesort(nums,mid+1,ub);
+            merge(nums,lb,mid,mid+1,ub);
+        }
+    }
+    public void sortColors(int[] nums) {
+        mergesort(nums,0,nums.length-1);
+    }
+}
