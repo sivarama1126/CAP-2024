@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s= sc.nextLine();
+        Set<Character> map= new LinkedHashSet<Character>();
+        for(int i=0;i<s.length();i++){
+            char m=s.charAt(i);
+            map.add(m);
+        }
+        String b="";
+        Iterator obj =  map.iterator();
+        while(obj.hasNext()){
+            b=b+(obj.next());
+        }
+        System.out.println(b);
+    }
+}
