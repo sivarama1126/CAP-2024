@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+class BankAcc{
+    String name;
+    int accno;
+    int balance;
+    
+    public BankAcc( String name ) {
+        this.name=name; 
+        this.balance =0;
+     }
+    public void deposit(int e){
+        balance=balance+e;
+        
+     }
+    public void setRunning(int k){
+        this.accno=k;
+    }
+    public void withdraw(int e){
+        if((balance-e)>= 0){
+            balance = (balance-e);
+          }
+        else{
+            System.out.println( "Negative Balance Transaction Cancelled" );
+          }
+    }
+    public void display(){                                                  
+        System.out.print(accno + " ");
+        System.out.print(name + " ");
+        System.out.println(balance);
+    }
+}
+public class Solution {
+
+    public static void main(String[] args) {
+       Scanner in = new Scanner(System.in);
+        int a = Integer.parseInt(in.nextLine());
+        String name =in.nextLine();
+        int c = Integer.parseInt(in.nextLine());
+         BankAcc obj = new BankAcc(name);
+    obj.setRunning(a);
+           for(int i = 0;i<c;i++){
+            String[] abc = in.nextLine().split(" ");
+            String d = abc[0];
+                
+            if(d.equals("Display")){
+              obj.display();
+            }
+            else if(d.equals("Deposit")){
+                     obj.deposit(Integer.parseInt(abc[1]));
+                    }          
+             else if(d.equals("Withdraw")){
+                     obj.withdraw(Integer.parseInt(abc[1]));
+                    }
+           }
+
+    }
+}
